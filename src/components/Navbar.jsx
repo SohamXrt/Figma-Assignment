@@ -1,38 +1,65 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Navbar.css';
 
-const Navbar = () => {
+const links = ['Home', 'About', 'Team', 'Contact'];
+
+function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [active, setActive] = useState('home');
+
+  // scroll spy for nav
+  useEffect(() => {
+    const sections = links
+      .map(l => document.getElementById(l.toLowerCase()))
+      .filter(Boolean);
+
+    const obs = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px', threshold: 0 }
+    );
+
+    sections.forEach(s => obs.observe(s));
+    return () => obs.disconnect();
+  }, []);
 
   return (
-    <nav className="navbar" id="navbar">
-      <div className="navbar__container container">
-        <a href="#" className="navbar__logo" id="navbar-logo">
-          Flavor'est
-        </a>
-        
-        <button 
-          className={`navbar__hamburger ${menuOpen ? 'active' : ''}`}
+    <nav className="nav">
+      <div className="nav-inner container">
+        <a href="#" className="logo">Flavor'est</a>
+
+        <button
+          className={`hamburger ${menuOpen ? 'active' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
-          id="navbar-hamburger"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span /><span /><span />
         </button>
 
-        <ul className={`navbar__links ${menuOpen ? 'active' : ''}`} id="navbar-links">
-          <li><a href="#home" className="navbar__link active" onClick={() => setMenuOpen(false)}>Home</a></li>
-          <li><a href="#about" className="navbar__link" onClick={() => setMenuOpen(false)}>About</a></li>
-          <li><a href="#team" className="navbar__link" onClick={() => setMenuOpen(false)}>Team</a></li>
-          <li><a href="#contact" className="navbar__link" onClick={() => setMenuOpen(false)}>Contact</a></li>
+        <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
+          {links.map(name => {
+            const id = name.toLowerCase();
+            return (
+              <li key={id}>
+                <a
+                  href={`#${id}`}
+                  className={`nav-link ${active === id ? 'active' : ''}`}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {name}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
-        <a href="#contact" className="navbar__cta" id="navbar-cta">Get Started</a>
+        <a href="#contact" className="cta-btn">Get Started</a>
       </div>
     </nav>
   );
-};
+}
 
 export default Navbar;
