@@ -1,0 +1,134 @@
+.progress {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress__wave-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+.progress__wave-path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: draw-wave 3s ease forwards;
+}
+
+@keyframes draw-wave {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.progress__container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+.progress__image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress__image-circle {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-slow);
+}
+
+.progress__image-circle:hover {
+  transform: scale(1.03);
+}
+
+.progress__image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.progress__content {
+  padding-left: 20px;
+}
+
+.progress__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--color-black);
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+}
+
+.progress__text {
+  font-size: 0.95rem;
+  color: var(--color-gray-600);
+  line-height: 1.8;
+  margin-bottom: 28px;
+  max-width: 480px;
+}
+
+.progress__cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 32px;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+}
+
+.progress__cta:hover {
+  background: var(--color-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 77, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .progress__container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .progress__content {
+    padding-left: 0;
+  }
+
+  .progress__image-circle {
+    width: 280px;
+    height: 280px;
+  }
+
+  .progress__text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .progress__cta {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress__image-circle {
+    width: 220px;
+    height: 220px;
+  }
+}

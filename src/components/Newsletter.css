@@ -1,0 +1,129 @@
+.newsletter {
+  position: relative;
+  background: var(--color-mint);
+  overflow: hidden;
+  text-align: center;
+}
+
+.newsletter__container {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.newsletter__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-black);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.newsletter__subtitle {
+  font-size: 1rem;
+  color: var(--color-gray-600);
+  margin-bottom: 36px;
+}
+
+.newsletter__form {
+  display: flex;
+  justify-content: center;
+}
+
+.newsletter__input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.newsletter__input {
+  width: 100%;
+  padding: 14px 20px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.8);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.newsletter__input:focus {
+  border-color: var(--color-green-dark);
+  box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.1);
+}
+
+.newsletter__input::placeholder {
+  color: var(--color-gray-400);
+}
+
+.newsletter__submit {
+  padding: 14px 36px;
+  background: var(--color-green-dark);
+  color: var(--color-white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all var(--transition-fast);
+  width: auto;
+  min-width: 180px;
+}
+
+.newsletter__submit:hover {
+  background: #1B5E20;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+}
+
+.newsletter__success {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  color: var(--color-green-dark);
+  font-weight: 600;
+  animation: fade-up 0.4s ease;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.newsletter__blob {
+  position: absolute;
+  bottom: 40px;
+  right: 60px;
+  width: 100px;
+  height: 140px;
+  background: var(--color-purple);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  opacity: 0.6;
+  animation: morph 8s ease-in-out infinite;
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; }
+  50% { border-radius: 40% 60% 40% 60% / 50% 40% 60% 50%; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .newsletter__blob {
+    width: 60px;
+    height: 80px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  .newsletter__input-wrapper {
+    max-width: 100%;
+  }
+}
