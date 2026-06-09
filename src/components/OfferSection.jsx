@@ -2,7 +2,6 @@ import './OfferSection.css';
 
 const offers = [
   {
-    id: 1,
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="40" height="40" rx="10" fill="#F3E8FF"/>
@@ -11,10 +10,9 @@ const offers = [
       </svg>
     ),
     title: 'Collaborative & partnership',
-    description: 'Client-first focus, result oriented',
+    desc: 'Client-first focus, result oriented',
   },
   {
-    id: 2,
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="40" height="40" rx="10" fill="#FFF3E0"/>
@@ -22,10 +20,9 @@ const offers = [
       </svg>
     ),
     title: 'We talk about our weight',
-    description: 'Transparent, lift others, inspire growth',
+    desc: 'Transparent, lift others, inspire growth',
   },
   {
-    id: 3,
     icon: (
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="40" height="40" rx="10" fill="#E8F5E9"/>
@@ -34,51 +31,44 @@ const offers = [
       </svg>
     ),
     title: 'Piloting digital confidence',
-    description: 'Lead the way in digital transformation',
+    desc: 'Lead the way in digital transformation',
   },
 ];
 
-const OfferSection = () => {
+function OfferSection() {
   return (
-    <section className="offer section" id="team">
-      <div className="offer__container container">
-        <h2 className="offer__title fade-in">
+    <section className="offers section" id="team">
+      <div className="offers-wrap container">
+        <h2 className="offers-title fade-in">
           What we can<br />
           offer you!
         </h2>
 
-        <div className="offer__list">
-          {offers.map((offer, index) => (
-            <div 
-              key={offer.id} 
-              className="offer__item fade-in"
-              style={{ transitionDelay: `${index * 0.15}s` }}
-            >
-              <div className="offer__item-icon">
-                {offer.icon}
+        <div className="offers-list">
+          {offers.map((item, i) => (
+            <div key={i} className="offer-item fade-in">
+              <div className="offer-icon">{item.icon}</div>
+              <div className="offer-text">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
               </div>
-              <div className="offer__item-content">
-                <h3 className="offer__item-title">{offer.title}</h3>
-                <p className="offer__item-desc">{offer.description}</p>
-              </div>
-              <div className="offer__item-line"></div>
+              <div className="offer-line" />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Decorative wavy line */}
-      <svg className="offer__decoration" viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path 
-          d="M0 50C240 10 480 90 720 50C960 10 1200 90 1440 50" 
-          stroke="var(--color-pink-light)" 
-          strokeWidth="1.5" 
+      <svg className="wavy-line" viewBox="0 0 1440 100" fill="none" aria-hidden="true">
+        <path
+          d="M0 50C240 10 480 90 720 50C960 10 1200 90 1440 50"
+          stroke="var(--color-pink-light)"
+          strokeWidth="1.5"
           fill="none"
           opacity="0.5"
         />
       </svg>
     </section>
   );
-};
+}
 
 export default OfferSection;

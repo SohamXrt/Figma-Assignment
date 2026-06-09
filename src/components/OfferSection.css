@@ -1,13 +1,13 @@
-.offer {
+.offers {
   position: relative;
   overflow: hidden;
 }
 
-.offer__container {
+.offers-wrap {
   max-width: 900px;
 }
 
-.offer__title {
+.offers-title {
   font-family: var(--font-serif);
   font-size: clamp(2.2rem, 4vw, 3.5rem);
   font-weight: 400;
@@ -17,13 +17,12 @@
   letter-spacing: -0.01em;
 }
 
-.offer__list {
+.offers-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
-.offer__item {
+.offer-item {
   display: flex;
   align-items: center;
   gap: 24px;
@@ -33,16 +32,16 @@
   transition: all var(--transition-normal);
 }
 
-.offer__item:first-child {
+.offer-item:first-child {
   border-top: 1px solid var(--color-gray-200);
 }
 
-.offer__item:hover {
+.offer-item:hover {
   padding-left: 12px;
   background: linear-gradient(90deg, rgba(124, 77, 255, 0.03), transparent);
 }
 
-.offer__item-icon {
+.offer-icon {
   flex-shrink: 0;
   width: 48px;
   height: 48px;
@@ -51,11 +50,11 @@
   justify-content: center;
 }
 
-.offer__item-content {
+.offer-text {
   flex: 1;
 }
 
-.offer__item-title {
+.offer-text h3 {
   font-family: var(--font-sans);
   font-size: 1.1rem;
   font-weight: 600;
@@ -63,13 +62,13 @@
   margin-bottom: 4px;
 }
 
-.offer__item-desc {
+.offer-text p {
   font-size: 0.85rem;
   color: var(--color-gray-400);
   font-weight: 400;
 }
 
-.offer__item-line {
+.offer-line {
   width: 40px;
   height: 2px;
   background: var(--color-black);
@@ -77,12 +76,12 @@
   transition: width var(--transition-normal), background var(--transition-normal);
 }
 
-.offer__item:hover .offer__item-line {
+.offer-item:hover .offer-line {
   width: 60px;
   background: var(--color-purple);
 }
 
-.offer__decoration {
+.wavy-line {
   position: absolute;
   top: 20px;
   right: 0;
@@ -91,24 +90,21 @@
   opacity: 0.4;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
-  .offer__title {
+  .offers-title {
     margin-bottom: 40px;
   }
-
-  .offer__item {
+  .offer-item {
     padding: 20px 0;
     gap: 16px;
   }
-
-  .offer__item-line {
+  .offer-line {
     display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .offer__item {
+  .offer-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
